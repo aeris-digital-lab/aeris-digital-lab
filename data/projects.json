@@ -1,0 +1,21 @@
+{
+  "projects": [
+    {
+      "id": "APS-001",
+      "name": "APS-001",
+      "status": "Development",
+      "progress": 5,
+      "category": "AI Engineering",
+      "description": "AERIS engineering project currently under development.",
+      "stages": {
+        "research": "active",
+        "analysis": "pending",
+        "design": "pending",
+        "verification": "pending",
+        "prototype": "pending",
+        "testing": "pending",
+        "manufacturing": "pending"
+      }
+    }
+  ]
+}
