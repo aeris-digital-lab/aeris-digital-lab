@@ -1,25 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AERIS DIGITAL LAB</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AERIS DIGITAL LAB</title>
+
+<meta name="description"
+content="AERIS DIGITAL LAB — AI-First Engineering Research & Development Lab.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07111f;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(7,17,31,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1b2b40;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #42d9ff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #42d9ff;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 25px 80px;
+    background:
+        radial-gradient(circle at center, #12304d 0%, #07111f 55%);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid #2b506d;
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: #42d9ff;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    letter-spacing: 5px;
+    line-height: 1.05;
+}
+
+.hero h1 span {
+    color: #42d9ff;
+}
+
+.hero h2 {
+    margin-top: 20px;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: normal;
+    color: #d4e1ed;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 25px auto;
+    color: #9db0c2;
+    font-size: 17px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    background: #42d9ff;
+    color: #06101c;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+/* SECTIONS */
+
+section {
+    padding: 100px 25px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #91a6b8;
+}
+
+/* PIPELINE */
+
+.pipeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 15px;
+}
+
+.step {
+    background: #0c1b2c;
+    border: 1px solid #1b3249;
+    border-radius: 12px;
+    padding: 25px 15px;
+    text-align: center;
+}
+
+.step-number {
+    color: #42d9ff;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.step h3 {
+    font-size: 17px;
+}
+
+/* AGENTS */
+
+.agents {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.agent {
+    background: #0c1b2c;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #1b3249;
+}
+
+.agent h3 {
+    margin-bottom: 10px;
+    color: #42d9ff;
+}
+
+.agent p {
+    color: #91a6b8;
+    font-size: 14px;
+}
+
+/* PROJECT */
+
+.project-card {
+    background: linear-gradient(135deg, #0c1b2c, #102a42);
+    border: 1px solid #24516c;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+}
+
+.project-card h3 {
+    font-size: 30px;
+    color: #42d9ff;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: #b4c4d1;
+}
+
+/* PROGRESS */
+
+.progress-box {
+    max-width: 800px;
+    margin: auto;
+}
+
+.progress-bar {
+    height: 15px;
+    background: #17293b;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.progress-fill {
+    width: 5%;
+    height: 100%;
+    background: #42d9ff;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #1b2b40;
+    color: #71869a;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: 2px;
+    }
+
+    section {
+        padding: 75px 20px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>AERIS DIGITAL LAB</h1>
+<!-- NAVIGATION -->
 
-    <h2>AI Engineering Research & Development Lab</h2>
+<nav>
+<div class="nav-container">
 
-    <p>
-        Research. Engineering. Innovation.
-    </p>
+<div class="logo">
+AERIS <span>DIGITAL LAB</span>
+</div>
 
-    <p>
-        An AI-first engineering laboratory for transforming
-        research ideas into real-world products.
-    </p>
+<div class="nav-links">
+<a href="#mission">Mission</a>
+<a href="#pipeline">Pipeline</a>
+<a href="#agents">AI Agents</a>
+<a href="#projects">Projects</a>
+</div>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+AI-FIRST ENGINEERING LAB
+</div>
+
+<h1>
+AERIS <span>DIGITAL LAB</span>
+</h1>
+
+<h2>
+Research. Engineering. Innovation.
+</h2>
+
+<p>
+An AI-first engineering laboratory designed to transform
+research ideas into engineered, tested and manufacturable products.
+</p>
+
+<a href="#mission" class="button">
+Explore AERIS
+</a>
+
+</div>
+
+</section>
+
+
+<!-- MISSION -->
+
+<section id="mission">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Our Mission</h2>
+
+<p>
+From research to real-world engineering.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>Research → Engineering → Production</h3>
+
+<p>
+AERIS DIGITAL LAB connects artificial intelligence,
+engineering knowledge, research, design, prototyping,
+testing and manufacturing into one continuous workflow.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PIPELINE -->
+
+<section id="pipeline">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Engineering Pipeline</h2>
+
+<p>
+The AERIS lifecycle
+</p>
+
+</div>
+
+<div class="pipeline">
+
+<div class="step">
+<div class="step-number">01</div>
+<h3>Research</h3>
+</div>
+
+<div class="step">
+<div class="step-number">02</div>
+<h3>Knowledge Extraction</h3>
+</div>
+
+<div class="step">
+<div class="step-number">03</div>
+<h3>Multi-Agent Analysis</h3>
+</div>
+
+<div class="step">
+<div class="step-number">04</div>
+<h3>Design Alternatives</h3>
+</div>
+
+<div class="step">
+<div class="step-number">05</div>
+<h3>Peer Verification</h3>
+</div>
+
+<div class="step">
+<div class="step-number">06</div>
+<h3>Engineering</h3>
+</div>
+
+<div class="step">
+<div class="step-number">07</div>
+<h3>Prototype</h3>
+</div>
+
+<div class="step">
+<div class="step-number">08</div>
+<h3>Testing</h3>
+</div>
+
+<div class="step">
+<div class="step-number">09</div>
+<h3>Manufacturing</h3>
+</div>
+
+<div class="step">
+<div class="step-number">10</div>
+<h3>QA / Production</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- AI AGENTS -->
+
+<section id="agents">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>AI Engineering Agents</h2>
+
+<p>
+Specialized intelligence working together.
+</p>
+
+</div>
+
+<div class="agents">
+
+<div class="agent">
+<h3>Research Agent</h3>
+<p>
+Searches, analyzes and organizes technical knowledge.
+</p>
+</div>
+
+<div class="agent">
+<h3>Engineering Agent</h3>
+<p>
+Converts research knowledge into engineering solutions.
+</p>
+</div>
+
+<div class="agent">
+<h3>Design Agent</h3>
+<p>
+Creates and evaluates alternative engineering designs.
+</p>
+</div>
+
+<div class="agent">
+<h3>Verification Agent</h3>
+<p>
+Reviews designs and identifies technical risks.
+</p>
+</div>
+
+<div class="agent">
+<h3>Prototype & Test Agent</h3>
+<p>
+Plans validation, testing and prototype development.
+</p>
+</div>
+
+<div class="agent">
+<h3>Manufacturing Agent</h3>
+<p>
+Analyzes production, costing, QA and scalability.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Projects</h2>
+
+<p>
+Engineering projects developed through the AERIS lifecycle.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>APS-001</h3>
+
+<p>
+AERIS Engineering Project — currently under development.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Mission Progress</h2>
+
+<p>
+AERIS DIGITAL LAB V0.1
+</p>
+
+</div>
+
+<div class="progress-box">
+
+<p>
+Foundation & Website
+</p>
+
+<div class="progress-bar">
+
+<div class="progress-fill"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+AERIS DIGITAL LAB
+
+<br><br>
+
+AI-First Engineering Research & Development
+
+<br><br>
+
+© 2026 AERIS DIGITAL LAB
+
+</footer>
 
 </body>
 </html>
