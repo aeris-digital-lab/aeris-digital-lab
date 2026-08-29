@@ -1,1 +1,315 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AERIS Research Center</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07111f;
+    color: white;
+    padding: 30px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.back {
+    color: #42d9ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+header h1 {
+    font-size: clamp(38px, 7vw, 65px);
+}
+
+header h1 span {
+    color: #42d9ff;
+}
+
+header p {
+    color: #91a6b8;
+    margin-top: 12px;
+}
+
+/* SEARCH */
+
+.search-box {
+    background: #0c1b2c;
+    border: 1px solid #1b3249;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.search-box label {
+    display: block;
+    margin-bottom: 12px;
+    color: #c5d3df;
+}
+
+.search-row {
+    display: flex;
+    gap: 10px;
+}
+
+.search-row input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #29445c;
+    background: #07111f;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-row input:focus {
+    border-color: #42d9ff;
+}
+
+.search-row button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #42d9ff;
+    color: #06101c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* WORKFLOW */
+
+.workflow {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.step {
+    background: #0c1b2c;
+    border: 1px solid #1b3249;
+    border-radius: 12px;
+    padding: 22px;
+    text-align: center;
+}
+
+.step.active {
+    border-color: #42d9ff;
+}
+
+.step-number {
+    color: #42d9ff;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.step h3 {
+    font-size: 16px;
+}
+
+/* RESULT */
+
+.result {
+    background: #0c1b2c;
+    border: 1px solid #1b3249;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.result h2 {
+    color: #42d9ff;
+    margin-bottom: 15px;
+}
+
+.result p {
+    color: #91a6b8;
+    line-height: 1.8;
+}
+
+#topicResult {
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #60758a;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    .search-row button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back" href="../index.html">
+← Back to AERIS
+</a>
+
+<header>
+
+<h1>
+AERIS <span>RESEARCH</span>
+</h1>
+
+<p>
+AI-powered engineering research foundation.
+</p>
+
+</header>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<label for="researchTopic">
+Research Topic
+</label>
+
+<div class="search-row">
+
+<input
+id="researchTopic"
+type="text"
+placeholder="Enter an engineering research topic..."
+>
+
+<button onclick="startResearch()">
+Start Research
+</button>
+
+</div>
+
+<div id="topicResult"></div>
+
+</div>
+
+
+<!-- WORKFLOW -->
+
+<div class="workflow">
+
+<div class="step active">
+<div class="step-number">01</div>
+<h3>Research Topic</h3>
+</div>
+
+<div class="step">
+<div class="step-number">02</div>
+<h3>Source Discovery</h3>
+</div>
+
+<div class="step">
+<div class="step-number">03</div>
+<h3>Knowledge Extraction</h3>
+</div>
+
+<div class="step">
+<div class="step-number">04</div>
+<h3>Technical Analysis</h3>
+</div>
+
+<div class="step">
+<div class="step-number">05</div>
+<h3>Research Report</h3>
+</div>
+
+<div class="step">
+<div class="step-number">06</div>
+<h3>Engineering Requirements</h3>
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div class="result">
+
+<h2>Research Engine</h2>
+
+<p>
+The AERIS Research Engine will eventually connect
+research agents with documents, academic papers,
+technical data, knowledge extraction and engineering
+analysis.
+</p>
+
+</div>
+
+
+<footer>
+
+AERIS DIGITAL LAB<br><br>
+AI-First Engineering Research & Development
+
+</footer>
+
+</div>
+
+
+<script>
+
+function startResearch() {
+
+    const topic =
+        document.getElementById("researchTopic").value;
+
+    const result =
+        document.getElementById("topicResult");
+
+    if (topic.trim() === "") {
+
+        result.innerHTML =
+        "Please enter a research topic.";
+
+        return;
+    }
+
+    result.innerHTML =
+    "Research mission created: <strong>"
+    + topic
+    + "</strong>";
+
+}
+
+</script>
+
+</body>
+</html>
